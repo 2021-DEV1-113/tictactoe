@@ -1,37 +1,22 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 import logo from "../logo.svg";
 import "./Square.css";
 
-const Square = ({ squareValue, squareClick, columnIndex, rowIndex }) => {
-  console.log(squareValue);
-  useEffect(
-    squareValue => {
-      console.log(squareValue);
-    },
-    [squareValue]
-  );
-
+const Square = ({ value, onClick }) => {
+  console.log("aaaaaaaaaaaaaaaaaa");
+  console.log(value);
   return (
-    <div
-      className={"square"}
-      onClick={() => {
-        console.log("squareValue");
-        console.log(squareValue);
-        squareClick(columnIndex, rowIndex);
-        console.log(squareValue);
-        console.log("squareValue");
-      }}
-    >
-      {squareValue === 1 && <img src={logo} className="App-logo" alt="logo" />}
-      {/* <img src={logo} className="App-logo" alt="logo" /> */}
+    <div className={"square"} onClick={onClick}>
+      {value === 1 && <img src={logo} className="App-logo" alt="logo" />}
+      {value}a{/* <img src={logo} className="App-logo" alt="logo" /> */}
     </div>
   );
 };
 
 Square.propTypes = {
-  squareValue: PropTypes.array,
+  value: PropTypes.array,
   squareClick: PropTypes.func,
   columnIndex: PropTypes.number,
   rowIndex: PropTypes.number
