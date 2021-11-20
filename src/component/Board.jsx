@@ -1,42 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 import Square from "./Square";
 import "./Board.css";
 
-const boardSize = 3;
-
-const grid = Array(boardSize)
-  .fill(0)
-  .map(columns => Array(boardSize).fill(0));
-
-console.log(grid);
-
-const squareClick = (columnIndex, rowIndex) => {
-  console.log("r");
-  grid[columnIndex][rowIndex] = 1;
-  console.log(grid);
-};
-
-const rows = grid.map((row, rowIndex) => {
+const Board = ({ board, onClick }) => {
   return (
-    <tr className="row">
-      {row.map((column, columnIndex) => {
+    <div className="board">
+      {board.map(i => {
         return (
           <Square
-            squareValue={grid[columnIndex][rowIndex]}
-            squareClick={squareClick}
-            columnIndex={columnIndex}
-            rowIndex={rowIndex}
-          />
+            value={i}
+            onClick={() => {
+              console.log("test");
+            }}
+          ></Square>
         );
       })}
-    </tr>
+    </div>
   );
-});
-
-const Board = ({}) => {
-  return <div className="board">{rows}</div>;
 };
 
 export default Board;
