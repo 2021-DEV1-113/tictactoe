@@ -9,8 +9,17 @@ const Square = ({ square, onClick }) => {
   if(square==='o') {
     imgClassName+= " oPlayer"
   }
+  let squareClassName = "square";
+  if(square){
+    squareClassName += " occupiedSquare";
+  } else {
+    squareClassName += " freeSquare";
+  }
+  if(square){
+    
+  }
   return (
-    <div className={"square"} onClick={onClick}>
+    <div className={squareClassName} onClick={onClick}>
       {square && <img src={logo} className={imgClassName} alt="logo" />}
     </div>
   );
