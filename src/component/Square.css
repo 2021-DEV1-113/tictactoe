@@ -2,13 +2,16 @@
   width: 200px;
   height: 200px;
   border: solid 1px black;
-  border-radius: 5px;
- 
+  border-radius: 5px; 
 }
 
-.square:hover {
+.freeSquare:hover {
   background-color: lightgrey;
   opacity: 20%;
+}
+
+.occupiedSquare {
+  cursor: not-allowed;
 }
 
 .oPlayer{
@@ -38,4 +41,13 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.playersTurn{
+  text-align: center;
+}
+
+.errorMessage{
+  color: red;
+  text-align: center;
 }
