@@ -1,25 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
 import logo from "../logo.svg";
 import "./Square.css";
 
-const Square = ({ value, onClick }) => {
-  console.log("aaaaaaaaaaaaaaaaaa");
-  console.log(value);
+const Square = ({ square, onClick }) => {
+  let imgClassName = "react-image";
+  if(square==='o') {
+    imgClassName+= " oPlayer"
+  }
+  let squareClassName = "square";
+  if(square){
+    squareClassName += " occupiedSquare";
+  } else {
+    squareClassName += " freeSquare";
+  }
   return (
-    <div className={"square"} onClick={onClick}>
-      {value === 1 && <img src={logo} className="App-logo" alt="logo" />}
-      {value}a{/* <img src={logo} className="App-logo" alt="logo" /> */}
+    <div className={squareClassName} onClick={onClick}>
+      {square && <img src={logo} className={imgClassName} alt="logo" />}
     </div>
   );
 };
 
 Square.propTypes = {
   value: PropTypes.array,
-  squareClick: PropTypes.func,
-  columnIndex: PropTypes.number,
-  rowIndex: PropTypes.number
+  squareClick: PropTypes.func
 };
 
 export default Square;

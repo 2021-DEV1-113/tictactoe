@@ -1,18 +1,18 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
+import React from "react";
 
 import Square from "./Square";
 import "./Board.css";
 
-const Board = ({ board, onClick }) => {
+const Board = ({ board, onSquareClick }) => {
   return (
     <div className="board">
-      {board.map(i => {
+      {board.map((square, i) => {        
         return (
           <Square
-            value={i}
+            key={`square-${i}`}
+            square={square}
             onClick={() => {
-              console.log("test");
+              onSquareClick(i)
             }}
           ></Square>
         );
