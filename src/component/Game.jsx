@@ -25,8 +25,8 @@ const Game = () => {
         if(occupiedSquares >= 8) {
           setMessage('draw')
         } else {
-          setXPlaysNext(!xPlaysNext);
           const message = xPlaysNext ? "blue's turn" : "red's turn";
+          setXPlaysNext(!xPlaysNext);
           setMessage(message);
         }        
       }
