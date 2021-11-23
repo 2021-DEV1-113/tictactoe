@@ -11,7 +11,7 @@ const Game = () => {
   const [occupiedSquares, setOccupiedSquares] = useState(0);
   const [message, setMessage] = useState("blue's turn");
 
-  const onSquareClick = (index) => {    
+  const onSquareClick = (index) => {
     if(!calculateWinner(board) && !board[index]){
       const boardClone = [...board];
       boardClone[index] = xPlaysNext ? 'x' : 'o';
@@ -25,7 +25,7 @@ const Game = () => {
         if(occupiedSquares >= 8) {
           setMessage('draw')
         } else {
-          const message = xPlaysNext ? "blue's turn" : "red's turn";
+          const message = xPlaysNext ? "red's turn" : "blue's turn";
           setXPlaysNext(!xPlaysNext);
           setMessage(message);
         }        
