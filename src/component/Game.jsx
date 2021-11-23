@@ -34,7 +34,7 @@ const Game = () => {
   };
 
   return (
-    <div>
+    <div className="container">
       <div className='title'>Tic tac toe</div>
       <Board board={board} onSquareClick={onSquareClick}></Board>      
       <span className="playersTurn">{message}</span>      

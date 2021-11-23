@@ -1,4 +1,6 @@
 .board {
   display: grid;
   grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+  width: 80%;
+  max-width: 600px;
 }
