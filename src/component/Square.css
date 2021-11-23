@@ -3,9 +3,39 @@
   height: 200px;
   border: solid 1px black;
   border-radius: 5px;
+ 
 }
 
 .square:hover {
   background-color: lightgrey;
   opacity: 20%;
+}
+
+.oPlayer{
+  filter: invert(1);
+}
+
+.react-image {
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+}
+
+.react-image:hover{
+  fill:white;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .react-image {
+    animation: react-image-spin infinite 20s linear;
+  }
+}
+
+@keyframes react-image-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

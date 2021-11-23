@@ -1,16 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
 import logo from "../logo.svg";
 import "./Square.css";
 
-const Square = ({ value, onClick }) => {
-  console.log("aaaaaaaaaaaaaaaaaa");
-  console.log(value);
+const Square = ({ square, onClick }) => {
+  let imgClassName = "react-image";
+  if(square==='o') {
+    imgClassName+= " oPlayer"
+  }
   return (
     <div className={"square"} onClick={onClick}>
-      {value === 1 && <img src={logo} className="App-logo" alt="logo" />}
-      {value}a{/* <img src={logo} className="App-logo" alt="logo" /> */}
+      {square && <img src={logo} className={imgClassName} alt="logo" />}
     </div>
   );
 };
