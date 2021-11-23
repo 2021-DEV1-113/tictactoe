@@ -26,7 +26,10 @@ const Game = () => {
   return (
     <div>
       Tic tac toe
-      <Board board={board}></Board>
+      <Board board={board} onSquareClick={onSquareClick}></Board>
+      <button onClick={()=>{
+        setBoard(Array(9).fill(null));
+      }}></button>
     </div>
   );
 };
