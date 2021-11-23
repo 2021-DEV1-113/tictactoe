@@ -9,6 +9,7 @@ const Board = ({ board, onSquareClick }) => {
       {board.map((square, i) => {        
         return (
           <Square
+            key={`square-${i}`}
             square={square}
             onClick={() => {
               onSquareClick(i)

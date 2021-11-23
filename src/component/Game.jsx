@@ -8,47 +8,46 @@ import './Game.css'
 const Game = () => {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [xPlaysNext, setXPlaysNext] = useState(true);
-  const [errorMessage, setErrorMessage] = useState('');
-  const [winner, setWinner] = useState(null);
+  const [occupiedSquares, setOccupiedSquares] = useState(0);
+  const [message, setMessage] = useState("blue's turn");
 
   const onSquareClick = (index) => {    
-    setErrorMessage('');
-    if(calculateWinner(board)){
-      setErrorMessage('there is already a winner');
-      return;
-    } else if(board[index]){
-      setErrorMessage('the square is already occupied');
-      return
-    } else {
+    if(!calculateWinner(board) && !board[index]){
       const boardClone = [...board];
       boardClone[index] = xPlaysNext ? 'x' : 'o';
       setBoard(boardClone);
       const winner = calculateWinner(boardClone);
+      setOccupiedSquares(occupiedSquares+1);
       if(winner){
-        setWinner(winner)
+        const message = winner === 'x' ? "blue wins" : "red wins";
+        setMessage(message)
       } else {
-        setXPlaysNext(!xPlaysNext);
+        if(occupiedSquares >= 8) {
+          setMessage('draw')
+        } else {
+          setXPlaysNext(!xPlaysNext);
+          const message = xPlaysNext ? "blue's turn" : "red's turn";
+          setMessage(message);
+        }        
       }
     }
   };
 
   return (
     <div>
-      <span className='title'>Tic tac toe</span>
-      <Board board={board} onSquareClick={onSquareClick} xPlaysNext={xPlaysNext} errorMessage={errorMessage}></Board>
-      {
-        winner
-          ? <span>{winner==='x' ? "blue wins" : "red wins"}</span>
-          : errorMessage
-            ? <span className="errorMessage">{errorMessage}</span>
-            : <span className="playersTurn">{xPlaysNext ? "blue's turn" : "red's turn"}</span>
-      }
-      <Button variant="primary" className='restart-button' onClick={()=>{
-        setBoard(Array(9).fill(null));
-        setWinner(null);
-        setXPlaysNext(true);
-        setErrorMessage('');
-      }}>Restart game</Button>
+      <div className='title'>Tic tac toe</div>
+      <Board board={board} onSquareClick={onSquareClick}></Board>      
+      <span className="playersTurn">{message}</span>      
+      <div className='restart-button'>
+        <Button variant="primary" onClick={()=>{
+          setBoard(Array(9).fill(null));
+          setXPlaysNext(true);
+          setMessage('');
+          setOccupiedSquares(0);
+        }}>
+          Restart game
+        </Button>
+      </div>      
     </div>
   );
 };

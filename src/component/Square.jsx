@@ -15,9 +15,6 @@ const Square = ({ square, onClick }) => {
   } else {
     squareClassName += " freeSquare";
   }
-  if(square){
-    
-  }
   return (
     <div className={squareClassName} onClick={onClick}>
       {square && <img src={logo} className={imgClassName} alt="logo" />}
@@ -27,9 +24,7 @@ const Square = ({ square, onClick }) => {
 
 Square.propTypes = {
   value: PropTypes.array,
-  squareClick: PropTypes.func,
-  columnIndex: PropTypes.number,
-  rowIndex: PropTypes.number
+  squareClick: PropTypes.func
 };
 
 export default Square;
