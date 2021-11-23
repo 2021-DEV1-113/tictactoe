@@ -42,7 +42,7 @@ const Game = () => {
         <Button variant="primary" onClick={()=>{
           setBoard(Array(9).fill(null));
           setXPlaysNext(true);
-          setMessage('');
+          setMessage("blue's turn");
           setOccupiedSquares(0);
         }}>
           Restart game
